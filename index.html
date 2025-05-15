@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 輔助之可攜式肌電訊號（EMG）類比前端與動作辨識系統設計</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background: #555;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            background: #777;
+        }
+
+        nav a:hover {
+            background: #999;
+        }
+
+        #content {
+            padding: 20px;
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI 輔助之可攜式肌電訊號（EMG）類比前端與動作辨識系統設計</h1>
+    </header>
+
+    <nav>
+        <a href="#" data-section="motivation">專題動機與背景</a>
+        <a href="#" data-section="goals">專題目標</a>
+        <a href="#" data-section="architecture">系統架構總覽</a>
+        <a href="#" data-section="tools">使用工具與設備</a>
+        <a href="#" data-section="timeline">專題時程規劃</a>
+        <a href="#" data-section="outcomes">預期成果</a>
+        <a href="#" data-section="risks">風險與對策</a>
+        <a href="#" data-section="references">參考資料</a>
+    </nav>
+
+    <div id="content">
+        <section id="motivation" class="active">
+            <h2>專題動機與背景</h2>
+            <p>肌電訊號（EMG, Electromyography）是人體肌肉活動時所產生的微弱電信號，可應用於動作識別、義肢控制、復健監控等領域。傳統 EMG 系統多仰賴昂貴設備，無法普及於可攜式或日常應用。</p>
+            <p>隨著人工智慧與嵌入式系統的快速發展，結合低功耗類比前端與 AI 推論的 EMG 設備成為新興研究趨勢。透過簡單、精準的 EMG 偵測與即時 AI 分類器，可實現如「手勢控制」、「肌肉狀態監控」等功能，廣泛應用於智慧醫療與人機介面。</p>
+        </section>
+        <section id="goals">
+            <h2>專題目標</h2>
+            <ul>
+                <li>設計一組高增益、低雜訊的 EMG 類比前端放大與濾波電路。</li>
+                <li>實作一套具備 EMG 特徵擷取與 AI 動作分類功能的嵌入式系統。</li>
+                <li>實現多種手部動作（如握拳、張開、彎曲）辨識功能。</li>
+                <li>可攜式系統設計，整合 MCU、藍牙傳輸與應用介面。</li>
+                <li>評估系統準確度、反應時間與功耗表現。</li>
+            </ul>
+        </section>
+        <section id="architecture">
+            <h2>系統架構總覽</h2>
+            <ul>
+                <li>類比前端（AFE）：差動放大、帶通濾波、全波整流與包絡線檢波、自動增益控制。</li>
+                <li>數位訊號處理與特徵擷取：內建 ADC 擷取 EMG 訊號、時域特徵萃取（RMS、Mean Absolute Value、ZC）。</li>
+                <li>AI 模型推論：Decision Tree、KNN 或 TinyML CNN 模型部署於 MCU。</li>
+                <li>控制與應用：LED 顯示、機械手臂控制或藍牙傳輸至手機。</li>
+            </ul>
+        </section>
+        <section id="tools">
+            <h2>使用工具與設備</h2>
+            <ul>
+                <li>開發平台：STM32 / Arduino Nano 33 BLE / ESP32</li>
+                <li>模擬軟體：LTspice、Multisim</li>
+                <li>設計軟體：KiCad / Eagle</li>
+                <li>電路元件：INA333、TL074、濾波電容、肌電電極</li>
+                <li>AI 工具：TensorFlow / Edge Impulse</li>
+            </ul>
+        </section>
+        <section id="timeline">
+            <h2>專題時程規劃</h2>
+            <p>詳細時程規劃見完整專案設計表。</p>
+        </section>
+        <section id="outcomes">
+            <h2>預期成果</h2>
+            <p>一套完整的 EMG 訊號處理與分類系統，準確率超過 85%。</p>
+        </section>
+        <section id="risks">
+            <h2>風險與對策</h2>
+            <ul>
+                <li>風險：EMG 訊號微弱；對策：提升濾波階數與放大器 CMRR。</li>
+                <li>風險：AI 分類準確率不足；對策：擴大訓練資料量。</li>
+            </ul>
+        </section>
+        <section id="references">
+            <h2>參考資料</h2>
+            <ul>
+                <li><a href="https://ninaweb.hevs.ch/">Ninapro EMG Dataset</a></li>
+                <li><a href="https://www.ti.com/lit/ds/symlink/ina333.pdf">Texas Instruments INA333 Datasheet</a></li>
+                <li>Research Paper: Real-Time EMG Signal Classification Using TinyML</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript: 切換顯示對應的 section
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault(); // 阻止預設跳轉
+                    const target = link.getAttribute('data-section');
+                    sections.forEach(section => {
+                        section.classList.remove('active'); // 隱藏所有 section
+                        if (section.id === target) {
+                            section.classList.add('active'); // 顯示目標 section
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
